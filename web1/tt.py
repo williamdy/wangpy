@@ -23,3 +23,4 @@ def polygon(n, length):
 
 # squr(200)
 polygon(360, 2)
+#polygon(36,2)
