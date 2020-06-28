@@ -1,0 +1,10 @@
+clouds:
+    test_cloud:
+        region_name: RegionOne
+        auth:
+            project_domain_name: default
+            user_domain_name: default
+            project_name: admin
+            username: admin
+            password: keystone_sugon
+            auth_url: http://10.0.39.210:5000/v3
