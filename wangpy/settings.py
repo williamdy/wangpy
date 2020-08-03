@@ -24,7 +24,7 @@ SECRET_KEY = '22530%ll!(3lm&vyp7q)ubek54)kxex*&x1^r2wj$$s!(ziq1l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -118,5 +118,5 @@ STATIC_URL = '/static/'
 # Rest Framework
 REST_FRAMEWORK = {
     # 2 records per page
-    'PAGE_SIZE':2
+    'PAGE_SIZE':10
 }

@@ -18,8 +18,25 @@ class Product(models.Model):
     name = models.CharField('name', max_length=50)
     weight = models.CharField('weight', max_length=20)
     size = models.CharField('size', max_length=20)
+
     # type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name='type')
 
     # 设置返回值
     def __str__(self):
+        return self.name
+
+
+class VM(models.Model):
+    id = models.CharField('id', max_length=50, primary_key=True)
+    name = models.CharField('name', max_length=50)
+    status = models.CharField('status', max_length=20)
+
+    # 设置返回值
+    def __str__(self):
+        return self.name
+
+    def __str__(self,id,name,status):
+        self.name = name
+        self.id = id
+        self.status = status
         return self.name

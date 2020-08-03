@@ -20,9 +20,11 @@ from web1.api import api
 
 urlpatterns = [
     #  url(r'^admin/', admin.urls),
-    url(r'^index', views.index),
     url(r'^test_get', views.test_get),
     url(r'^openstack_test', views.openstack_test),
     url(r'^vsphere_test', views.vsphere_test),
-    url(r'^api_test', api.product_class.as_view()),
+    url(r'^api_product', api.product_class.as_view()),
+    url(r'^api_vm', api.VM_class.as_view()),
+    url(r'^', views.index),
+
 ]

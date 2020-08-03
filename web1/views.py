@@ -4,7 +4,8 @@ import json
 import openstack
 from pyVim import connect
 import atexit
-
+from web1.api.models import VM
+from  web1.api.serializers import VMSerializer
 
 # 将请求定位到index.html文件中
 def index(request):
@@ -25,11 +26,19 @@ def openstack_test(request):
 
     # Initialize cloud
     conn = openstack.connect(cloud='test_cloud')
-    result = "";
+    result = ""
     for server in conn.compute.servers():
-        print(server.to_dict())
+        status = server.vm_state
+        name = server.name
+        id = server.id
+        vm = VM(id,name,status)
+        vm.save()
+        # serializer = VMSerializer(vm)
+        # if serializer.is_valid():
+        #     serializer.save()
+        print(id + "," + name + "," + status )
         result = json.dumps(server.to_dict())
-    return HttpResponse(result);
+    return HttpResponse(result)
 
 
 def vsphere_test(request):
@@ -40,4 +49,4 @@ def vsphere_test(request):
     atexit.register(connect.Disconnect, service_instance)
     session_id = service_instance.content.sessionManager.currentSession.key
     result = session_id
-    return HttpResponse(result);
+    return HttpResponse(result)
