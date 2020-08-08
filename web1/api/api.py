@@ -36,7 +36,7 @@ class VM_class(APIView):
         if name is not None:
             queryset = queryset.filter(name=name)
         if status is not None:
-            queryset= queryset.filter(status=status)
+            queryset = queryset.filter(status=status)
         pg = LimitOffsetPagination()
         page_roles = pg.paginate_queryset(queryset=queryset, request=request, view=self)
         serializer = VMSerializer(instance=page_roles, many=True)
